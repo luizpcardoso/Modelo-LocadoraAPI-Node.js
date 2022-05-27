@@ -41,3 +41,12 @@ const dvdCreateService = async ({
 };
 
 export default dvdCreateService;
+
+export const test = (arr: any) => {
+  const savedDvds = arr.map(async (dvd: any) => {
+    console.log("testando");
+    return await dvdCreateService(dvd);
+  });
+
+  return savedDvds;
+};
