@@ -12,7 +12,8 @@
   "scripts": {
     "dev": "ts-node-dev src/app.ts",
     "typeorm": "typeorm-ts-node-commonjs",
-    "build": "tsc"
+    "build": "tsc",
+    "start": "node ./src/app.js"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
