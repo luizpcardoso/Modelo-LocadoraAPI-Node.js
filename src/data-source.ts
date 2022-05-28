@@ -4,8 +4,6 @@ require("dotenv").config();
 
 export const AppDataSource = new DataSource({
   type: "postgres",
-  host: "localhost",
-  port: 5432,
 
   url: process.env.DATABASE_URL,
   ssl:
@@ -18,10 +16,10 @@ export const AppDataSource = new DataSource({
   entities:
     process.env.NODE_ENV === "production"
       ? ["dist/entities/*.js"]
-      : ["/src/entities/*.ts"],
+      : ["src/entities/*.ts"],
   migrations:
     process.env.NODE_ENV === "production"
-      ? ["src/migrations/*.js"]
+      ? ["dist/migrations/*.js"]
       : ["src/migrations/*.ts"],
 });
 
