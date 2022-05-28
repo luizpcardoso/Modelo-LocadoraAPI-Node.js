@@ -1,6 +1,5 @@
 import { hashSync } from "bcrypt";
 import { MigrationInterface, QueryRunner } from "typeorm";
-import { v4 as uuidv4 } from "uuid";
 
 export class initialMigration1653768090915 implements MigrationInterface {
   name = "initialMigration1653768090915";
@@ -42,10 +41,10 @@ export class initialMigration1653768090915 implements MigrationInterface {
     await queryRunner.query(
       `
               INSERT INTO "user" ("id","name","email", "password", "isAdm")
-              VALUES ('${uuidv4()}','Admin','kenzie@mail.com', '${hashSync(
-        "umaSenhaForte!",
-        10
-      )}', true)
+              VALUES ('0001','Admin','kenzie@mail.com', '${hashSync(
+                "umaSenhaForte!",
+                10
+              )}', true)
       
               `
     );
