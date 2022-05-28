@@ -14,20 +14,26 @@ const dvdBuyService = async ({ quantity, dvdId, authEmail }: IDvdBuy) => {
 
   const dvds = await productRepository.find();
   const dvdBuy = dvds.find((dvd) => dvd.id == dvdId);
+  if (!dvdBuy) {
+    throw new AppError(404, "dvd not found");
+  }
+
+  console.log(dvdBuy);
 
   const users = await userRepository.find();
   const user = users.find((user) => user.email === authEmail);
-
-  const carts = await cartRepository.find();
-  const cart = carts.find((cart) => cart.id == user.cart.id);
-
   if (!user) {
     throw new AppError(400, "User not found");
   }
 
-  if (!dvdBuy) {
-    throw new AppError(404, "dvd not found");
-  }
+  console.log(user);
+
+  const carts = await cartRepository.find();
+  const cart = carts.find((cart) => cart.id == user.cart.id);
+
+  console.log(dvdBuy);
+  console.log(user);
+  console.log(cart);
 
   if (quantity > dvdBuy.stock.quantity) {
     throw new AppError(

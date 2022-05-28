@@ -11,16 +11,10 @@ const dvdCreteController = async (req: Request, res: Response) => {
     const authEmail = req.userEmail;
     const arrayTest: any = [];
 
-    const savedDvds = await dvds.map((dvd: any) => {
-      const test = dvdCreateService(dvd);
-      arrayTest.push(test);
-      console.log(arrayTest);
-
-      //return await dvdCreateService(dvd);
-    });
-    console.log("entrou aqui");
-
-    //const createdDvd = await dvdCreateService(dvds[0]);
+    for (let dvd of dvds) {
+      const newDvd = await dvdCreateService(dvd);
+      arrayTest.push(newDvd);
+    }
 
     return res.status(201).send(arrayTest);
   } catch (err) {

@@ -3,6 +3,7 @@ import { Dvd } from "../../entities/product.entity";
 import { AppError } from "../../errors/appError";
 import { IDvdCreate } from "../../interfaces/dvds";
 import { Stock } from "../../entities/stock.entity";
+import { json } from "express";
 
 const dvdCreateService = async ({
   name,
@@ -41,12 +42,3 @@ const dvdCreateService = async ({
 };
 
 export default dvdCreateService;
-
-export const test = (arr: any) => {
-  const savedDvds = arr.map(async (dvd: any) => {
-    console.log("testando");
-    return await dvdCreateService(dvd);
-  });
-
-  return savedDvds;
-};
