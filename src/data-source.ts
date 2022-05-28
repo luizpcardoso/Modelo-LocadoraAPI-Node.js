@@ -17,12 +17,12 @@ export const AppDataSource = new DataSource({
   logging: true,
   entities:
     process.env.NODE_ENV === "production"
-      ? ["dist/entities/*.js"]
-      : ["src/entities/*.ts"],
+      ? ["dist/**/*.entity.js"]
+      : ["dist/**/*.entity.ts"],
   migrations:
     process.env.NODE_ENV === "production"
-      ? ["src/migrations/*.js"]
-      : ["src/migrations/*.ts"],
+      ? ["dist/**/migration/*.js"]
+      : ["dist/**/migration/*.ts"],
 });
 
 AppDataSource.initialize()
